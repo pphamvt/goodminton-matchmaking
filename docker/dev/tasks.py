@@ -61,6 +61,13 @@ def runserver(ctx):
         "python manage.py runserver 0.0.0.0:8000",
         container=True,
         )
+    
+# Create a superuser
+@task
+def create_superuser(ctx):
+    run(ctx,
+        "python manage.py createsuperuser",
+        container=True)
 
 @task
 def build(ctx):

@@ -85,7 +85,7 @@ DATABASES = {
     # these default urls are used for running unit tests, if running locally, use a settings.ini file, if prod - use app settings
     "default": config(
         "DEFAULT_DATABASE_URL",
-        default="postgresql://postgres:password@default_db:5432/pdp_configs_default",
+        default="postgresql://postgres:password@default_db:5432/configs_default",
         cast=parse_db_url,
     ),
     "dev": config(
@@ -96,11 +96,6 @@ DATABASES = {
     "prod": config(
         "PROD_DATABASE_URL",
         default="postgresql://postgres:password@prod_db:5432/prod_configs",
-        cast=parse_db_url,
-    ),
-    "test": config(
-        "TEST_DATABASE_URL",
-        default="postgresql://postgres:password@test_db:5432/test_configs",
         cast=parse_db_url,
     ),
 }
