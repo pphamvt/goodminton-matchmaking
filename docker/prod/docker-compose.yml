@@ -1,0 +1,28 @@
+services:
+  app:
+    image: goodminton:1.0   # prebuilt image pushed to registry
+    restart: always
+    env_file:
+      - .env
+    depends_on:
+      - db
+    ports:
+      - "8000:8000"
+    networks:
+      - backend
+
+  db:
+    image: postgres:13
+    restart: always
+    env_file:
+      - .env
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    networks:
+      - backend
+
+volumes:
+  postgres_data:
+
+networks:
+  backend:

@@ -1,0 +1,21 @@
+services:
+  dev:
+    build:
+      context: ../..
+      dockerfile: docker/dev/Dockerfile
+    volumes:
+      - ../../src:/src
+    ports:
+      - "8000:8000"
+    environment:
+      - PYTHONUNBUFFERED=1
+      - DATABASE_URL=postgres://user:password@db:5432/mydb
+    stdin_open: true
+    tty: true
+
+  db:
+    image: postgres:13
+    environment:
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: mydb
